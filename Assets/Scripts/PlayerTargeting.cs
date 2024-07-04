@@ -8,11 +8,9 @@ public class PlayerTargeting : Singleton<PlayerTargeting>
 {
     [Header("# Scanner")]
     public List<GameObject> monsterList;
-    public RaycastHit[] targets;
+    public List<GameObject> attackMonsterList;
     public LayerMask targetLayer; // 레이어
     public Transform nearestTarget; // 가장 가까운 목표
-    public Vector3 scannerPos;
-    public float scannerRadius;
 
     [Header("# Weapon")]
     public GameObject weapon; // 무기 프리팹
@@ -23,15 +21,14 @@ public class PlayerTargeting : Singleton<PlayerTargeting>
     private void Awake()
     {
         monsterList = new List<GameObject>();
+        attackMonsterList = new List<GameObject>();
     }
 
     void Update()
     {
-        if(monsterList.Count > 0)
+        if(attackMonsterList.Count > 0)
         {
-            targets = Physics.SphereCastAll((transform.position + scannerPos), scannerRadius, transform.rotation.eulerAngles, 100f, targetLayer);
-
-            nearestTarget = GetNearest(targets);
+            nearestTarget = GetNearest(attackMonsterList);
 
             if (nearestTarget != null)
             {
@@ -54,30 +51,38 @@ public class PlayerTargeting : Singleton<PlayerTargeting>
         {
             RaycastHit hit;
 
-            bool isHit = Physics.Raycast(transform.position , monsterList[i].transform.position - transform.position, out hit, 20f, LayerMask.GetMask("Monster") | LayerMask.GetMask("Wall"));
+            bool isHit = Physics.Raycast(transform.position , monsterList[i].transform.position - transform.position, out hit, 20f, targetLayer);
 
             if (isHit && hit.transform.CompareTag("Monster"))
             {
                 Gizmos.color = Color.green;
+
+                if (!attackMonsterList.Contains(monsterList[i]))
+                {
+                    attackMonsterList.Add(monsterList[i]);
+                }
             }
             else
             {
                 Gizmos.color = Color.red;
+
+                if (attackMonsterList.Contains(monsterList[i]))
+                {
+                    attackMonsterList.Remove(monsterList[i]);
+                }
             }
             Gizmos.DrawRay(transform.position, monsterList[i].transform.position - transform.position);
         }
-
-        Gizmos.DrawWireSphere(transform.position + scannerPos, scannerRadius);
     }
 
     // 배열 내 가장 가까운 적을 찾는 함수
-    public Transform GetNearest(RaycastHit[] targets)
+    public Transform GetNearest(List<GameObject> targets)
     {
         Transform result = null;
         float diff = 100; // 처음 계산을 위한 최소 거리
 
         // 인식된 오브젝트마다 플에이어와의 거리 계산
-        foreach (RaycastHit target in targets)
+        foreach (GameObject target in targets)
         {
             Vector3 myPos = transform.position; // 플레이어 위치
             Vector3 targetPos = target.transform.position; // 인식된 오브젝트의 위치
