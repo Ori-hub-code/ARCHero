@@ -15,11 +15,13 @@ public class PlayerMove : Singleton<PlayerMove>
 
     [Header("# Scripts")]
     JoyStick joyStick;
+    PlayerTargeting targeting;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
-        anim = GetComponent<Animator>();  
+        anim = GetComponent<Animator>();
+        targeting = GetComponent<PlayerTargeting>();
     }
 
     private void Start()
@@ -34,24 +36,30 @@ public class PlayerMove : Singleton<PlayerMove>
 
     private void Move()
     {
-        // hAxis = Input.GetAxis("Horizontal");
-        // vAxis = Input.GetAxis("Vertical");
-
         if(joyStick.joyVec.x != 0 || joyStick.joyVec.y != 0)
         {
             rigid.velocity = new Vector3(joyStick.joyVec.x, 0, joyStick.joyVec.y).normalized * speed; // 좌표값
-            rigid.rotation = Quaternion.Euler(0f, Mathf.Atan2(joyStick.joyVec.x, joyStick.joyVec.y) * Mathf.Rad2Deg,0f); ; // 회전값
-        }
 
+            // 회전값
+            if (targeting.nearestTarget)
+            {
+                Transform target = targeting.nearestTarget.transform;
 
-        // 애니메이션
-        if(joyStick.joyVec.x != 0 || joyStick.joyVec.y != 0)
-        {
+                transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+            }
+            else
+            {
+                // 조이스틱 회전값
+                rigid.rotation = Quaternion.Euler(0f, Mathf.Atan2(joyStick.joyVec.x, joyStick.joyVec.y) * Mathf.Rad2Deg, 0f);
+            }
+
+            // 애니메이션
             anim.SetBool("isIdle", false);
             anim.SetBool("isWalk", true);
         }
         else if(joyStick.joyVec.x == 0 && joyStick.joyVec.y == 0)
         {
+            // 애니메이션
             anim.SetBool("isIdle", true);
             anim.SetBool("isWalk", false);
         }

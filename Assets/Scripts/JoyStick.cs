@@ -50,6 +50,7 @@ public class JoyStick : Singleton<JoyStick>
     // 드랍이 되었을 때
     public void Drop()
     {
+        Debug.Log("Drop");
         joyVec = Vector3.zero;
         bgStick.transform.position = joyStickFirsPos; // 위치값 초기화
         smallStick.transform.position = joyStickFirsPos; // 위치값 초기화
