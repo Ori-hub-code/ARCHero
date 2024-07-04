@@ -14,6 +14,11 @@ public class PlayerWeapon : MonoBehaviour
     private void OnEnable()
     {
         rigid.velocity = transform.forward * 20f;
+
+        // È¸Àü°ª
+        Vector3 dir = (PlayerTargeting.Instance.nearestTarget.position - transform.position).normalized;
+        transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+
     }
 
     private void OnTriggerEnter(Collider other)

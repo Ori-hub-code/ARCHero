@@ -1930,8 +1930,14 @@ MonoBehaviour:
   monsterList: []
   targetLayer:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 256
   nearestTarget: {fileID: 0}
+  scannerPos: {x: 0, y: 0, z: 0}
+  scannerRadius: 10
+  weapon: {fileID: 3845668913828332231, guid: 551a589f620cf0f4ebe8263277fdee0c, type: 3}
+  weaponStartPos: {fileID: 1767519783}
+  attackTime: 1
+  currentAttackTime: 0
 --- !u!4 &496912490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 469084, guid: 4f64287687043804ba01a8640888c560, type: 3}
@@ -5992,7 +5998,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.2, z: 0.4}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 480284159}
