@@ -16,8 +16,8 @@ public class PlayerWeapon : MonoBehaviour
         rigid.velocity = transform.forward * 20f;
 
         // È¸Àü°ª
-        Vector3 dir = (PlayerTargeting.Instance.nearestTarget.position - transform.position).normalized;
-        transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+        //Vector3 dir = (PlayerTargeting.Instance.nearestTarget.position - transform.position).normalized;
+        //transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
 
     }
 

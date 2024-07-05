@@ -8,9 +8,9 @@ public class Monster : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon"))
         {
-            PlayerTargeting.Instance.nearestTarget = null;
-            PlayerTargeting.Instance.monsterList.Remove(this.gameObject);
             PlayerTargeting.Instance.attackMonsterList.Remove(this.gameObject);
+            PlayerTargeting.Instance.monsterList.Remove(this.gameObject);
+            PlayerTargeting.Instance.nearestTarget = null;
 
             Destroy(this.gameObject);
         }
@@ -20,9 +20,9 @@ public class Monster : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Weapon"))
         {
-            PlayerTargeting.Instance.nearestTarget = null;
-            PlayerTargeting.Instance.monsterList.Remove(this.gameObject);
             PlayerTargeting.Instance.attackMonsterList.Remove(this.gameObject);
+            PlayerTargeting.Instance.monsterList.Remove(this.gameObject);
+            PlayerTargeting.Instance.nearestTarget = null;
 
             Destroy(this.gameObject);
         }
