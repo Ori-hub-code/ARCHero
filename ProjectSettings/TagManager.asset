@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monster
   - Wall
+  - ExitDoor
   layers:
   - Default
   - TransparentFX

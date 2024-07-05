@@ -56,12 +56,14 @@ public class PlayerMove : Singleton<PlayerMove>
             // 애니메이션
             anim.SetBool("isIdle", false);
             anim.SetBool("isWalk", true);
+            anim.SetBool("isAttack", false);
         }
         else if(joyStick.joyVec.x == 0 && joyStick.joyVec.y == 0)
         {
             // 애니메이션
             anim.SetBool("isIdle", true);
             anim.SetBool("isWalk", false);
+            anim.SetBool("isAttack", false);
         }
     }
 }

@@ -6,6 +6,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PlayerTargeting : Singleton<PlayerTargeting>
 {
+    Animator anim;
+
     [Header("# Scanner")]
     public List<GameObject> monsterList;
     public List<GameObject> attackMonsterList;
@@ -20,6 +22,8 @@ public class PlayerTargeting : Singleton<PlayerTargeting>
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
+
         monsterList = new List<GameObject>();
         attackMonsterList = new List<GameObject>();
     }
@@ -38,11 +42,23 @@ public class PlayerTargeting : Singleton<PlayerTargeting>
                 {
                     currentAttackTime = 0;
 
-                    // 公扁 积己
-                    Instantiate(weapon, weaponStartPos);
+                    // 局聪皋捞记
+                    anim.SetBool("isWalk", false);
+                    anim.SetBool("isIdle", false);
+                    anim.SetBool("isAttack", true);
+
+                    StartCoroutine(ThrowWeapon());
                 }
             }
         }
+    }
+
+    IEnumerator ThrowWeapon()
+    {
+        yield return new WaitForSeconds(0.4f);
+
+        // 公扁 积己
+        Instantiate(weapon, weaponStartPos);
     }
 
     void OnDrawGizmos()
