@@ -64,6 +64,14 @@ public class PlayerMove : Singleton<PlayerMove>
             anim.SetBool("isIdle", true);
             anim.SetBool("isWalk", false);
             anim.SetBool("isAttack", false);
+
+            // È¸Àü°ª
+            if (targeting.nearestTarget)
+            {
+                Transform target = targeting.nearestTarget.transform;
+
+                transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+            }
         }
     }
 }
