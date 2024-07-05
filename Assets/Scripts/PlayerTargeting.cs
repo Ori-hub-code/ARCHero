@@ -7,6 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 public class PlayerTargeting : Singleton<PlayerTargeting>
 {
     Animator anim;
+    PlayerMove playerMove;
 
     [Header("# Scanner")]
     public List<GameObject> monsterList;
@@ -17,12 +18,11 @@ public class PlayerTargeting : Singleton<PlayerTargeting>
     [Header("# Weapon")]
     public GameObject weapon; // 무기 프리팹
     public Transform weaponStartPos;
-    public float attackTime; // 공격 주기
-    public float currentAttackTime;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        playerMove = GetComponent<PlayerMove>();
 
         monsterList = new List<GameObject>();
         attackMonsterList = new List<GameObject>();
@@ -34,20 +34,16 @@ public class PlayerTargeting : Singleton<PlayerTargeting>
         {
             nearestTarget = GetNearest(attackMonsterList);
 
-            if (nearestTarget != null)
+            if (nearestTarget != null && playerMove.joyStick.joyVec.x == 0 && playerMove.joyStick.joyVec.y == 0)
             {
-                currentAttackTime += Time.deltaTime;
-
-                if (currentAttackTime > attackTime)
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle") || anim.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
                 {
-                    currentAttackTime = 0;
-
                     // 애니메이션
                     anim.SetBool("isWalk", false);
                     anim.SetBool("isIdle", false);
                     anim.SetBool("isAttack", true);
 
-                    StartCoroutine(ThrowWeapon());
+                    //StartCoroutine(ThrowWeapon());
                 }
             }
         }
@@ -55,10 +51,22 @@ public class PlayerTargeting : Singleton<PlayerTargeting>
 
     IEnumerator ThrowWeapon()
     {
-        yield return new WaitForSeconds(0.4f);
+        //yield return new WaitForSeconds(0.8f);
+        yield return null;
+
+        // 애니메이션 속도
+        anim.SetFloat("attackSpeed", 1);
 
         // 무기 생성
         Instantiate(weapon, weaponStartPos);
+    }
+
+    void FinishiAttack()
+    {
+        // 애니메이션
+        anim.SetBool("isWalk", false);
+        anim.SetBool("isIdle", true);
+        anim.SetBool("isAttack", false);
     }
 
     void OnDrawGizmos()

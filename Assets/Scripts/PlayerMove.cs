@@ -14,7 +14,7 @@ public class PlayerMove : Singleton<PlayerMove>
     [SerializeField] float speed;
 
     [Header("# Scripts")]
-    JoyStick joyStick;
+    public JoyStick joyStick;
     PlayerTargeting targeting;
 
     private void Awake()
