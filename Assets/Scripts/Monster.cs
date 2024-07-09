@@ -8,11 +8,11 @@ public class Monster : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon"))
         {
-            PlayerTargeting.Instance.attackMonsterList.Remove(this.gameObject);
-            PlayerTargeting.Instance.monsterList.Remove(this.gameObject);
+            //PlayerTargeting.Instance.attackMonsterList.Remove(this.gameObject);
+            //PlayerTargeting.Instance.monsterList.Remove(this.gameObject);
             PlayerTargeting.Instance.nearestTarget = null;
 
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -20,11 +20,11 @@ public class Monster : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Weapon"))
         {
-            PlayerTargeting.Instance.attackMonsterList.Remove(this.gameObject);
-            PlayerTargeting.Instance.monsterList.Remove(this.gameObject);
+            //PlayerTargeting.Instance.attackMonsterList.Remove(this.gameObject);
+            //PlayerTargeting.Instance.monsterList.Remove(this.gameObject);
             PlayerTargeting.Instance.nearestTarget = null;
 
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
