@@ -721,7 +721,7 @@ MonoBehaviour:
   hpSlider: {fileID: 1226201289268484915}
   backHpSlide: {fileID: 2481636054454955512}
   backHpHit: 0
-  enemy: {fileID: 9168604360397513644}
+  enemy: {fileID: 8631212358466449086}
   hpBarPos: {x: 0, y: 1.5, z: 0}
   maxHp: 1000
   currentHp: 1000
@@ -2176,13 +2176,14 @@ GameObject:
   - component: {fileID: 113852915883025090}
   - component: {fileID: 1830934972513237861}
   - component: {fileID: 121398255157388884}
+  - component: {fileID: 5481935144580747987}
   - component: {fileID: 4357397658333131884}
   m_Layer: 8
   m_Name: LOVEDUCK
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 40
   m_IsActive: 1
 --- !u!4 &8631212358466449086
 Transform:
@@ -2193,7 +2194,7 @@ Transform:
   m_GameObject: {fileID: 2313098849176628562}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2272,6 +2273,28 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4.38
   m_Center: {x: 0, y: 3.8, z: 0.8}
+--- !u!195 &5481935144580747987
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2313098849176628562}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 3.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &4357397658333131884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2284,7 +2307,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79017ae4e8ec71b409c0113a7be1d1c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 1000
+  currentHp: 1000
+  damage: 100
+  playerRealizeRange: 10
+  attackRange: 5
+  attackCoolTimeCacl: 5
+  canAtk: 1
+  moveSpeed: 2
+  player: {fileID: 0}
+  nvAgent: {fileID: 0}
+  distance: 0
+  parentRoom: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  currentState: 0
   enemyCanvas: {fileID: 689276683131298125}
+  meleeAtkArea: {fileID: 0}
 --- !u!1 &2329886669659847699
 GameObject:
   m_ObjectHideFlags: 0

@@ -74,4 +74,24 @@ public class PlayerMove : Singleton<PlayerMove>
             }
         }
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.transform.CompareTag("Monster"))
+        {
+            Monster monsterLogic = collision.transform.GetComponent<Monster>();
+
+            if (monsterLogic.currentState == MonsterMelleFSM.State.Attack)
+            {
+                PlayerHpBar.Instance.currentHp -= monsterLogic.damage * 2f;
+                monsterLogic.currentState = MonsterMelleFSM.State.Idle;
+
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged"))
+                {
+                    anim.SetTrigger("damaged");
+                    Instantiate(EffectSet.Instance.playerDmgEffect, targeting.nearestTarget.transform.position, Quaternion.Euler(90, 0, 0));
+                }
+            }
+        }
+    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHpBar : MonoBehaviour
+public class PlayerHpBar : Singleton<PlayerHpBar>
 {
     public Transform player;
     public Slider hpBar;

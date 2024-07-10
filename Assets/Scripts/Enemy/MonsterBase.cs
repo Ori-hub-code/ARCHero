@@ -7,22 +7,68 @@ public class MonsterBase : MonoBehaviour
 {
     // Hp
     public float maxHp = 1000f;
-    public float curentHp = 1000f;
+    public float currentHp = 1000f;
 
     // Damage
     public float damage = 100f;
 
     // Attack
-    protected float playerRealizeRange = 10f; // 플레이어 인식 범위
-    protected float attackRange = 5f; // 공격 범위
+    [SerializeField] protected float playerRealizeRange = 10f; // 플레이어 인식 범위
+    [SerializeField] protected float attackRange = 5f; // 공격 범위
     protected float attackCoolTime = 5f;
-    protected float attackCoolTimeCacl = 5f;
-    protected bool canAtk = true;
+    [SerializeField] protected float attackCoolTimeCacl = 5f;
+    [SerializeField] protected bool canAtk = true;
 
     // Setting
     [SerializeField] protected float moveSpeed = 2f;
     [SerializeField] protected GameObject player;
-    protected NavMeshAgent nvAgent;
-    protected float distance;
-    protected GameObject parentRoom;
+    [SerializeField] protected NavMeshAgent nvAgent;
+    [SerializeField] protected float distance;
+    [SerializeField] protected GameObject parentRoom;
+    [SerializeField] LayerMask layerMask;
+
+    protected bool CanAtkStateFun()
+    {
+        Debug.Log("CanAtkStateFun");
+        Vector3 targetDir = new Vector3(player.transform.position.x - transform.position.x, 0f, player.transform.position.z - transform.position.z);
+
+        Physics.Raycast(new Vector3(transform.position.x, 0.5f, transform.position.z), targetDir, out RaycastHit hit, 30f, layerMask);
+        distance = Vector3.Distance(player.transform.position, transform.position);
+
+        if(hit.transform == null)
+        {
+            Debug.Log("hit is null");
+            return false;
+        }
+        
+        if(hit.transform.CompareTag("Player") && distance <= attackRange)
+        {
+            StartCoroutine(CalcCoolTime());
+            Debug.Log("Can Attack");
+            return true;
+        }
+        else
+        {
+            Debug.Log("just null");
+            return false;
+        }
+    }
+
+    protected virtual IEnumerator CalcCoolTime()
+    {
+        while(true)
+        {
+            yield return null;
+            if (!canAtk)
+            {
+                attackCoolTimeCacl -= Time.deltaTime;
+
+                if(attackCoolTimeCacl <= 0)
+                {
+                    attackCoolTimeCacl = attackCoolTime;
+                    canAtk = true;
+                }
+            }
+        }
+    }
 }
