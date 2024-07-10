@@ -149,10 +149,6 @@ public class MonsterMelleFSM : MonsterBase
             Debug.Log("Attack");
             currentState = State.Attack;
         }
-        else if(distance > playerRealizeRange) // 일정 거리 이하일 경우에만 플레이어를 향하도록 설정
-        {
-            nvAgent.SetDestination(transform.position - Vector3.forward * 5f);
-        }
         else
         {
             nvAgent.SetDestination(player.transform.position);
