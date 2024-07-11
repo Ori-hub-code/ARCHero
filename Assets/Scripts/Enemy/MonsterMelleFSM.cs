@@ -65,10 +65,8 @@ public class MonsterMelleFSM : MonsterBase
             anim.SetBool("isIdle", true);
         }
 
-        Debug.Log("Idle");
         if (CanAtkStateFun())
         {
-            Debug.Log("use CanAtkStateFun_1");
             if (canAtk)
             {
                 currentState = State.Attack;
@@ -135,7 +133,7 @@ public class MonsterMelleFSM : MonsterBase
     protected virtual IEnumerator Move()
     {
         yield return null;
-        Debug.Log("move");
+
 
         // 애니메이션
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("walk"))
@@ -146,7 +144,6 @@ public class MonsterMelleFSM : MonsterBase
 
         if(CanAtkStateFun() && canAtk)
         {
-            Debug.Log("Attack");
             currentState = State.Attack;
         }
         else

@@ -29,7 +29,6 @@ public class MonsterBase : MonoBehaviour
 
     protected bool CanAtkStateFun()
     {
-        Debug.Log("CanAtkStateFun");
         Vector3 targetDir = new Vector3(player.transform.position.x - transform.position.x, 0f, player.transform.position.z - transform.position.z);
 
         Physics.Raycast(new Vector3(transform.position.x, 0.5f, transform.position.z), targetDir, out RaycastHit hit, 30f, layerMask);
@@ -37,19 +36,16 @@ public class MonsterBase : MonoBehaviour
 
         if(hit.transform == null)
         {
-            Debug.Log("hit is null");
             return false;
         }
         
         if(hit.transform.CompareTag("Player") && distance <= attackRange)
         {
             StartCoroutine(CalcCoolTime());
-            Debug.Log("Can Attack");
             return true;
         }
         else
         {
-            Debug.Log("just null");
             return false;
         }
     }
