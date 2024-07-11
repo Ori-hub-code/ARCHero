@@ -12,8 +12,8 @@ public class MonsterMelleFSM : MonsterBase
 
     public State currentState = State.Idle;
 
-    WaitForSeconds Delay500 = new WaitForSeconds(0.5f);
-    WaitForSeconds Delay250 = new WaitForSeconds(0.25f);
+    protected WaitForSeconds Delay500 = new WaitForSeconds(0.5f);
+    protected WaitForSeconds Delay250 = new WaitForSeconds(0.25f);
 
     Animator anim;
 
@@ -26,6 +26,7 @@ public class MonsterMelleFSM : MonsterBase
     protected void Start()
     {
         parentRoom = transform.parent.transform.parent.transform.parent.gameObject;
+        roomCondition = parentRoom.GetComponentInChildren<RoomCondition>();
     }
 
     protected virtual void InitMonster()
@@ -41,7 +42,7 @@ public class MonsterMelleFSM : MonsterBase
         {
             if(enemy == this.gameObject)
             {
-                while (!parentRoom.GetComponentInChildren<RoomCondition>().playerInThisRoom)
+                while (!roomCondition.playerInThisRoom)
                 {
                     yield return Delay500;
                 }

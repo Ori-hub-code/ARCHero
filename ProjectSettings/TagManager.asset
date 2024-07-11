@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - ExitDoor
   - Weapon
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX

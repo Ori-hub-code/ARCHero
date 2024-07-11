@@ -33,18 +33,23 @@ public class RoomCondition : MonoBehaviour
         }
     }
 
+    void PlayerEnter()
+    {
+        playerInThisRoom = true;
+        playerTargeting.monsterList = monsterList;
+        Debug.Log("Enter New Room! Mob Count : " + playerTargeting.monsterList.Count);
+        Debug.Log("Player Enter New Room");
+
+        // 플레이어 입장 시, 해당 방의 포탈의 Collider 비활성화
+        Portal portal = BattleManager.Instance.rooms[BattleManager.Instance.roomIndex].GetComponentInChildren<Portal>();
+        portal.GetComponent<Collider>().enabled = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            playerInThisRoom = true;
-            playerTargeting.monsterList = monsterList;
-            Debug.Log("Enter New Room! Mob Count : " + playerTargeting.monsterList.Count);
-            Debug.Log("Player Enter New Room");
-
-            // 플레이어 입장 시, 해당 방의 포탈의 Collider 비활성화
-            Portal portal = BattleManager.Instance.rooms[BattleManager.Instance.roomIndex].GetComponentInChildren<Portal>();
-            portal.GetComponent<Collider>().enabled = false;
+            Invoke("PlayerEnter", 0.1f);
         }
 
         if (other.CompareTag("Monster"))

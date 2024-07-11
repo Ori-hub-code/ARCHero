@@ -2477,7 +2477,7 @@ GameObject:
   - component: {fileID: 6958790567695321574}
   - component: {fileID: 4871664679594141814}
   - component: {fileID: 8095541898990980387}
-  - component: {fileID: 1092831240985172146}
+  - component: {fileID: 5949431800930146975}
   m_Layer: 8
   m_Name: sheep
   m_TagString: Monster
@@ -2503,6 +2503,7 @@ Transform:
   - {fileID: 6237450215693527100}
   - {fileID: 262974183703217494}
   - {fileID: 183569157616442626}
+  - {fileID: 8048016181106574705}
   m_Father: {fileID: 8032166798179258932}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &4786624068482859897
@@ -2588,7 +2589,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3.5
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -2596,7 +2597,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1092831240985172146
+--- !u!114 &5949431800930146975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2605,14 +2606,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2524051375182620577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79017ae4e8ec71b409c0113a7be1d1c4, type: 3}
+  m_Script: {fileID: 11500000, guid: ccddfa7db56fe6546ae079baf429e618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 1000
   currentHp: 1000
   damage: 100
-  playerRealizeRange: 10
-  attackRange: 5
+  playerRealizeRange: 15
+  attackRange: 10
   attackCoolTimeCacl: 5
   canAtk: 1
   moveSpeed: 2
@@ -2625,7 +2626,9 @@ MonoBehaviour:
     m_Bits: 128
   currentState: 0
   enemyCanvas: {fileID: 5624651250277444128}
-  meleeAtkArea: {fileID: 0}
+  weaponPos: {fileID: 1366328093481932970}
+  dangerMarker: {fileID: 7042908274232816610, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+  enemyBolt: {fileID: 2391291101043721957, guid: efa15acd80401064e8c41071a6a4afd9, type: 3}
 --- !u!1 &2647654786290654292
 GameObject:
   m_ObjectHideFlags: 0
@@ -7313,3 +7316,69 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1001 &4688354411973462885
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2078100900952063134}
+    m_Modifications:
+    - target: {fileID: 3359735268187065876, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359735268187065876, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359735268187065876, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359735268187065876, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359735268187065876, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359735268187065876, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359735268187065876, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359735268187065876, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359735268187065876, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359735268187065876, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042908274232816610, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+      propertyPath: m_Name
+      value: DangerLine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042908274232816610, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+--- !u!4 &8048016181106574705 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3359735268187065876, guid: 529e9d87788845047b83a3f80f5a282b, type: 3}
+  m_PrefabInstance: {fileID: 4688354411973462885}
+  m_PrefabAsset: {fileID: 0}

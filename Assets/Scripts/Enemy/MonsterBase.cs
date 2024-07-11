@@ -25,7 +25,8 @@ public class MonsterBase : MonoBehaviour
     [SerializeField] protected NavMeshAgent nvAgent;
     [SerializeField] protected float distance;
     [SerializeField] protected GameObject parentRoom;
-    [SerializeField] LayerMask layerMask;
+    protected RoomCondition roomCondition;
+    [SerializeField] protected LayerMask layerMask;
 
     protected bool CanAtkStateFun()
     {

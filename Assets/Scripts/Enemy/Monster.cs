@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class Monster : MonsterMelleFSM
 {
     public GameObject enemyCanvas;
-    public GameObject meleeAtkArea;
+    public GameObject weaponPos;
 
     private void OnDrawGizmosSelected()
     {

@@ -75,6 +75,27 @@ public class PlayerMove : Singleton<PlayerMove>
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("EnemyWeapon"))
+        {
+            if (collision.gameObject.name.Contains("Sheep"))
+            {
+                Sheep sheepLogic = collision.transform.GetComponent<SheepBolt>().parentMonster;
+
+                PlayerHpBar.Instance.currentHp -= sheepLogic.damage * 2f;
+                sheepLogic.currentState = MonsterMelleFSM.State.Idle;
+            }
+
+            // ¿Ã∆Â∆Æ
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged"))
+            {
+                anim.SetTrigger("damaged");
+                Instantiate(EffectSet.Instance.playerDmgEffect, targeting.nearestTarget.transform.position, Quaternion.Euler(90, 0, 0));
+            }
+        }
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         if (collision.transform.CompareTag("Monster"))
