@@ -17,7 +17,7 @@ public class MonsterMelleFSM : MonsterBase
 
     Animator anim;
 
-    private void Awake()
+    protected void Awake()
     {
         nvAgent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();

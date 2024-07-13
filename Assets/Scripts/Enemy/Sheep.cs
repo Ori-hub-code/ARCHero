@@ -7,6 +7,16 @@ public class Sheep : Monster
     public GameObject dangerMarker;
     public GameObject enemyBolt;
 
+    private void Start()
+    {
+        base.Start();
+
+        player = PlayerMove.Instance.gameObject;
+        attackCoolTimeCacl = attackCoolTime;
+        StartCoroutine(ResetAtkArea());
+
+        // StartCoroutine(WaitPlayer());
+    }
 
     protected override IEnumerator Idle()
     {
@@ -74,6 +84,7 @@ public class Sheep : Monster
         // 세팅 초기화
         nvAgent.speed = moveSpeed;
         currentState = State.Idle;
+        transform.LookAt(player.transform.position);
 
         //anim.SetBool("isWalk", false);
         //anim.SetBool("isIdle", true);

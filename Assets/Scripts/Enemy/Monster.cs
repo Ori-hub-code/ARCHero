@@ -59,7 +59,7 @@ public class Monster : MonsterMelleFSM
         Instantiate(EffectSet.Instance.duckAtkEffect, transform.position, Quaternion.Euler(90, 0, 0));
     }
 
-    IEnumerator ResetAtkArea()
+    protected IEnumerator ResetAtkArea()
     {
         while (true)
         {

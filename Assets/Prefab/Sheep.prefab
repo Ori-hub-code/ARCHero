@@ -2612,9 +2612,10 @@ MonoBehaviour:
   maxHp: 1000
   currentHp: 1000
   damage: 100
-  playerRealizeRange: 15
-  attackRange: 10
-  attackCoolTimeCacl: 5
+  playerRealizeRange: 20
+  attackRange: 15
+  attackCoolTime: 0
+  attackCoolTimeCacl: 10
   canAtk: 1
   moveSpeed: 2
   player: {fileID: 0}

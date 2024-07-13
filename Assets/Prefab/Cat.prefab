@@ -5130,9 +5130,10 @@ MonoBehaviour:
   maxHp: 1000
   currentHp: 1000
   damage: 100
-  playerRealizeRange: 10
-  attackRange: 5
-  attackCoolTimeCacl: 5
+  playerRealizeRange: 15
+  attackRange: 10
+  attackCoolTime: 10
+  attackCoolTimeCacl: 10
   canAtk: 1
   moveSpeed: 2
   player: {fileID: 0}
@@ -5144,7 +5145,7 @@ MonoBehaviour:
     m_Bits: 128
   currentState: 0
   enemyCanvas: {fileID: 8143283686667472483}
-  meleeAtkArea: {fileID: 0}
+  weaponPos: {fileID: 0}
 --- !u!1 &7041357926823873106
 GameObject:
   m_ObjectHideFlags: 0

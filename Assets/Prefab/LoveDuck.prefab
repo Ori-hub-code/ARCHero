@@ -2312,7 +2312,8 @@ MonoBehaviour:
   damage: 100
   playerRealizeRange: 10
   attackRange: 5
-  attackCoolTimeCacl: 5
+  attackCoolTime: 10
+  attackCoolTimeCacl: 10
   canAtk: 1
   moveSpeed: 2
   player: {fileID: 0}
@@ -2324,7 +2325,7 @@ MonoBehaviour:
     m_Bits: 128
   currentState: 0
   enemyCanvas: {fileID: 689276683131298125}
-  meleeAtkArea: {fileID: 0}
+  weaponPos: {fileID: 0}
 --- !u!1 &2329886669659847699
 GameObject:
   m_ObjectHideFlags: 0

@@ -114,5 +114,29 @@ public class PlayerMove : Singleton<PlayerMove>
                 }
             }
         }
+
+        if (collision.transform.CompareTag("EnemyWeapon"))
+        {
+            if (collision.gameObject.name.Contains("Sheep"))
+            {
+                Sheep sheepLogic = collision.gameObject.GetComponent<SheepBolt>().parentMonster;
+
+                PlayerHpBar.Instance.currentHp -= sheepLogic.damage * 2f;
+                sheepLogic.currentState = MonsterMelleFSM.State.Idle;
+            }
+            else if(collision.gameObject.name.Contains("Penguin"))
+            {
+                Penguin penguinLogic = collision.gameObject.GetComponent<PenguinBolt>().parentMonster;
+
+                PlayerHpBar.Instance.currentHp -= penguinLogic.damage * 2f;
+                penguinLogic.currentState = MonsterMelleFSM.State.Idle;
+            }
+
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Damaged"))
+            {
+                anim.SetTrigger("damaged");
+                Instantiate(EffectSet.Instance.playerDmgEffect, targeting.nearestTarget.transform.position, Quaternion.Euler(90, 0, 0));
+            }
+        }
     }
 }

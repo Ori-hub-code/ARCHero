@@ -13,10 +13,10 @@ public class MonsterBase : MonoBehaviour
     public float damage = 100f;
 
     // Attack
-    [SerializeField] protected float playerRealizeRange = 10f; // 플레이어 인식 범위
-    [SerializeField] protected float attackRange = 5f; // 공격 범위
-    protected float attackCoolTime = 5f;
-    [SerializeField] protected float attackCoolTimeCacl = 5f;
+    [SerializeField] protected float playerRealizeRange; // 플레이어 인식 범위
+    [SerializeField] protected float attackRange; // 공격 범위
+    [SerializeField] protected float attackCoolTime;
+    [SerializeField] protected float attackCoolTimeCacl;
     [SerializeField] protected bool canAtk = true;
 
     // Setting

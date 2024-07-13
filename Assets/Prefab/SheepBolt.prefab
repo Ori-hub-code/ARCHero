@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6220661831409356487}
   - component: {fileID: 4191363942801068347}
   - component: {fileID: 6988929982026041956}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SheepBolt
   m_TagString: EnemyWeapon
   m_Icon: {fileID: 0}

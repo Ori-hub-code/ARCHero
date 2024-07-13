@@ -21,7 +21,7 @@ public class SheepBolt : MonoBehaviour
         transform.rotation = Quaternion.Euler(currentRotation);
 
         // πÊ«‚
-        rigid.velocity = parentMonster.transform.forward * 3f;
+        rigid.velocity = parentMonster.transform.forward * 6f;
     }
 
     private void OnCollisionEnter(Collision collision)
