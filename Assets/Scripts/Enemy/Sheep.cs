@@ -14,18 +14,11 @@ public class Sheep : Monster
         player = PlayerMove.Instance.gameObject;
         attackCoolTimeCacl = attackCoolTime;
         StartCoroutine(ResetAtkArea());
-
-        // StartCoroutine(WaitPlayer());
     }
 
     protected override IEnumerator Idle()
     {
         yield return null;
-
-        //if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        //{
-        //    anim.SetBool("isIdle", true);
-        //}
 
         if (CanAtkStateFun())
         {
@@ -68,14 +61,6 @@ public class Sheep : Monster
         nvAgent.speed = 0;
         canAtk = false;
 
-        // 애니메이션
-        //if (!anim.GetCurrentAnimatorStateInfo(0).IsName("stun"))
-        //{
-        //    anim.SetTrigger("attack");
-        //    anim.SetBool("isWalk", false);
-        //    anim.SetBool("isIdle", false);
-        //}
-
         // 이펙트
         AtkEffect();
 
@@ -85,22 +70,11 @@ public class Sheep : Monster
         nvAgent.speed = moveSpeed;
         currentState = State.Idle;
         transform.LookAt(player.transform.position);
-
-        //anim.SetBool("isWalk", false);
-        //anim.SetBool("isIdle", true);
     }
 
     protected override IEnumerator Move()
     {
         yield return null;
-
-
-        // 애니메이션
-        //if (!anim.GetCurrentAnimatorStateInfo(0).IsName("walk"))
-        //{
-        //    anim.SetBool("isWalk", true);
-        //    anim.SetBool("isIdle", false);
-        //}
 
         if (CanAtkStateFun() && canAtk)
         {
