@@ -28,7 +28,7 @@ public class Monster : MonsterMelleFSM
         StartCoroutine(ResetAtkArea());
     }
 
-    void Update()
+    protected void Update()
     {
         foreach (GameObject enemy in PlayerTargeting.Instance.monsterList)
         {

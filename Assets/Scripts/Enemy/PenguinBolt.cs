@@ -51,7 +51,7 @@ public class PenguinBolt : MonoBehaviour
             }
         }
 
-        if (collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player") || collision.transform.CompareTag("Weapon"))
         {
             Destroy(gameObject);
         }

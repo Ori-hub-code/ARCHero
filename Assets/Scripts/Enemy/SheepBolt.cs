@@ -26,7 +26,7 @@ public class SheepBolt : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Player") || collision.transform.CompareTag("Weapon"))
         {
             Destroy(gameObject);
         }
